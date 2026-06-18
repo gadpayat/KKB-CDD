@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,6 +70,49 @@ calc(var(--dy) * 1px)
 )
 scale(.15);
 opacity:0;
+}
+}
+
+/* ==========================
+   TITLES
+========================== */
+
+.main-title{
+position:absolute;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+font-size:4rem;
+font-weight:800;
+letter-spacing:8px;
+color:#fff;
+text-shadow:
+0 0 10px rgba(255,255,255,.8),
+0 0 30px rgba(255,255,255,.6);
+z-index:1000;
+}
+
+.main-title::after{
+content:"";
+position:absolute;
+top:0;
+left:-150%;
+width:60%;
+height:100%;
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.95),
+transparent
+);
+transform:skewX(-25deg);
+animation:titleSweep 5s linear infinite;
+}
+
+@keyframes titleSweep{
+from{left:-150%;}
+to{left:250%;}
 }
 
 .portal-wrapper{
@@ -294,6 +338,8 @@ height:300px;
 
 <div id="welding-zone"></div>
 
+<div class="main-title">ENGINEERING PORTAL</div>
+
 <div class="portal-wrapper">
 
 <!-- =======================
@@ -498,3 +544,4 @@ setInterval(createWeldBurst,120);
 
 </body>
 </html>
+```
