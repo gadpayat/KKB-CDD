@@ -151,7 +151,126 @@ background:#fff;
 box-shadow:0 0 10px #fff,0 0 20px #fff;
 animation:rise linear infinite;
 }
+  
+/* ===========================
+   WELDING SPARKS
+=========================== */
 
+.weld-spark{
+
+    position:absolute;
+
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 0 4px #ffffff,
+        0 0 8px #ffd700,
+        0 0 12px #ff8800;
+
+    pointer-events:none;
+
+    animation:weldFly linear forwards;
+}
+
+@keyframes weldFly{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(
+                var(--dx),
+                var(--dy)
+            )
+            scale(0.2);
+
+    }
+
+}
+  
+/* ===========================
+   WELDING EFFECT
+=========================== */
+
+function createWeldingSpark(){
+
+    const spark =
+    document.createElement("div");
+
+    spark.className =
+    "weld-spark";
+
+    /* Welding source location */
+
+    const startX =
+    window.innerWidth * 0.15;
+
+    const startY =
+    window.innerHeight * 0.75;
+
+    spark.style.left =
+    startX + "px";
+
+    spark.style.top =
+    startY + "px";
+
+    const dx =
+    100 + Math.random()*350;
+
+    const dy =
+    -50 - Math.random()*250;
+
+    spark.style.setProperty(
+        "--dx",
+        dx + "px"
+    );
+
+    spark.style.setProperty(
+        "--dy",
+        dy + "px"
+    );
+
+    spark.style.animationDuration =
+    (0.5 + Math.random()*0.8) + "s";
+
+    document.body.appendChild(spark);
+
+    setTimeout(()=>{
+        spark.remove();
+    },1500);
+}
+
+/* Continuous welding */
+
+setInterval(()=>{
+
+    for(let i=0;i<8;i++){
+
+        setTimeout(
+            createWeldingSpark,
+            i*25
+        );
+
+    }
+
+},120);
+  
 @keyframes rise{
 from{transform:translateY(0);opacity:1}
 to{transform:translateY(-250px);opacity:0}
