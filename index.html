@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,13 +18,11 @@
 html,body{
     width:100%;
     height:100%;
-    overflow:hidden;
     background:transparent;
+    overflow:hidden;
 }
 
-/* ===========================
-   MAIN CONTAINER
-=========================== */
+/* Main Container */
 
 .portal{
     width:100vw;
@@ -31,118 +30,56 @@ html,body{
     position:relative;
 }
 
-/* ===========================
-   TITLE
-=========================== */
+/* 2x2 Centered Layout */
 
-.title{
-
-    position:absolute;
-    top:25px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    color:white;
-
-    font-size:4rem;
-    font-weight:700;
-
-    text-shadow:
-    0 0 10px white,
-    0 0 25px white;
-
-    z-index:100;
-}
-
-/* ===========================
-   CENTER HUB
-=========================== */
-
-.hub{
+.menu-grid{
 
     position:absolute;
 
-    width:220px;
-    height:220px;
-
-    left:50%;
     top:50%;
+    left:50%;
 
     transform:translate(-50%,-50%);
 
-    border-radius:50%;
+    display:grid;
 
-    background:
-    radial-gradient(circle at 30% 30%,
-    #ffffff,
-    #d9d9d9,
-    #777777);
+    grid-template-columns:
+    repeat(2,220px);
 
-    display:flex;
+    grid-template-rows:
+    repeat(2,220px);
+
+    gap:140px;
+
     justify-content:center;
     align-items:center;
-
-    box-shadow:
-    inset 0 10px 15px rgba(255,255,255,.7),
-    inset 0 -10px 15px rgba(0,0,0,.5),
-    0 0 50px rgba(255,255,255,.3);
-
-    z-index:5;
-}
-
-.hub span{
-    font-size:28px;
-    font-weight:bold;
-    color:#00334d;
-    text-align:center;
-}
-
-/* ===========================
-   HARDHATS
-=========================== */
-
-.holder{
-    position:absolute;
-}
-
-/* Top */
-
-.h1{
-    top:120px;
-    left:50%;
-    transform:translateX(-50%);
-    animation:floating 5s ease-in-out infinite;
-}
-
-/* Right */
-
-.h2{
-    top:50%;
-    right:120px;
-    transform:translateY(-50%);
-    animation:floating 6s ease-in-out infinite;
-}
-
-/* Bottom */
-
-.h3{
-    bottom:100px;
-    left:50%;
-    transform:translateX(-50%);
-    animation:floating 7s ease-in-out infinite;
-}
-
-/* Left */
-
-.h4{
-    top:50%;
-    left:120px;
-    transform:translateY(-50%);
-    animation:floating 5.5s ease-in-out infinite;
 }
 
 /* Floating Animation */
+
+.holder{
+
+    position:relative;
+
+    animation:
+    floating 6s ease-in-out infinite;
+}
+
+.holder:nth-child(1){
+    animation-duration:5s;
+}
+
+.holder:nth-child(2){
+    animation-duration:6s;
+}
+
+.holder:nth-child(3){
+    animation-duration:7s;
+}
+
+.holder:nth-child(4){
+    animation-duration:5.5s;
+}
 
 @keyframes floating{
 
@@ -151,18 +88,15 @@ html,body{
     }
 
     50%{
-        transform:translateY(-18px);
+        transform:translateY(-20px);
     }
 
     100%{
         transform:translateY(0px);
     }
-
 }
 
-/* ===========================
-   HARD HAT
-=========================== */
+/* Hard Hat */
 
 .hardhat{
 
@@ -175,7 +109,6 @@ html,body{
     position:relative;
 
     color:#00334d;
-
     font-size:20px;
     font-weight:bold;
 
@@ -204,7 +137,6 @@ html,body{
     box-shadow:
     0 0 25px gold,
     0 0 50px gold;
-
 }
 
 /* Hat Brim */
@@ -231,7 +163,7 @@ html,body{
     border-radius:20px;
 }
 
-/* Center Ridge */
+/* Hat Ridge */
 
 .hardhat::after{
 
@@ -253,9 +185,7 @@ html,body{
     border-radius:10px;
 }
 
-/* ===========================
-   SUBMENU
-=========================== */
+/* Submenus */
 
 .submenu{
     display:none;
@@ -273,11 +203,12 @@ html,body{
     width:190px;
 
     margin:6px auto;
+
     padding:10px;
 
-    text-decoration:none;
-
     text-align:center;
+
+    text-decoration:none;
 
     font-weight:bold;
 
@@ -302,9 +233,7 @@ html,body{
     background:white;
 }
 
-/* ===========================
-   SPARKS
-=========================== */
+/* Floating Sparks */
 
 .spark{
 
@@ -336,36 +265,31 @@ html,body{
         transform:translateY(-250px);
         opacity:0;
     }
-
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+/* Mobile */
 
 @media(max-width:768px){
 
-.title{
-    font-size:2rem;
-}
+.menu-grid{
 
-.hub{
-    width:150px;
-    height:150px;
-}
+    grid-template-columns:1fr;
 
-.hub span{
-    font-size:18px;
+    grid-template-rows:auto;
+
+    gap:90px;
 }
 
 .hardhat{
-    width:120px;
-    height:90px;
-    font-size:14px;
+
+    width:140px;
+    height:105px;
+
+    font-size:15px;
 }
 
 .hardhat::before{
-    width:135px;
+    width:160px;
 }
 
 }
@@ -377,17 +301,11 @@ html,body{
 
 <div class="portal">
 
-    <div class="title">
-        Engineering Unit
-    </div>
-
-    <div class="hub">
-        <span>ENGINEERING<br>UNIT</span>
-    </div>
+<div class="menu-grid">
 
     <!-- Planning -->
 
-    <div class="holder h1">
+    <div class="holder">
 
         <button class="hardhat"
         onclick="toggleMenu('m1')">
@@ -396,11 +314,11 @@ html,body{
 
         <div class="submenu" id="m1">
 
-            <a href="YOUR_LINK_HERE">Project Tracker</a>
-            <a href="YOUR_LINK_HERE">Work Plan</a>
-            <a href="YOUR_LINK_HERE">Pipeline</a>
-            <a href="YOUR_LINK_HERE">Monitoring</a>
-            <a href="YOUR_LINK_HERE">Reports</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Project Tracker</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Work Plan</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Pipeline</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Monitoring</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Reports</a>
 
         </div>
 
@@ -408,7 +326,7 @@ html,body{
 
     <!-- Design -->
 
-    <div class="holder h2">
+    <div class="holder">
 
         <button class="hardhat"
         onclick="toggleMenu('m2')">
@@ -417,11 +335,11 @@ html,body{
 
         <div class="submenu" id="m2">
 
-            <a href="YOUR_LINK_HERE">CAD Files</a>
-            <a href="YOUR_LINK_HERE">Drawings</a>
-            <a href="YOUR_LINK_HERE">Manuals</a>
-            <a href="YOUR_LINK_HERE">Templates</a>
-            <a href="YOUR_LINK_HERE">Specifications</a>
+            <a href="YOUR_LINK_HERE" target="_blank">CAD Files</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Drawings</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Manuals</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Templates</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Specifications</a>
 
         </div>
 
@@ -429,7 +347,7 @@ html,body{
 
     <!-- Construction -->
 
-    <div class="holder h3">
+    <div class="holder">
 
         <button class="hardhat"
         onclick="toggleMenu('m3')">
@@ -438,11 +356,11 @@ html,body{
 
         <div class="submenu" id="m3">
 
-            <a href="YOUR_LINK_HERE">Physical Progress</a>
-            <a href="YOUR_LINK_HERE">Inspection</a>
-            <a href="YOUR_LINK_HERE">Monitoring</a>
-            <a href="YOUR_LINK_HERE">Photos</a>
-            <a href="YOUR_LINK_HERE">Completion</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Physical Progress</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Inspection</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Monitoring</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Photos</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Completion</a>
 
         </div>
 
@@ -450,7 +368,7 @@ html,body{
 
     <!-- Documents -->
 
-    <div class="holder h4">
+    <div class="holder">
 
         <button class="hardhat"
         onclick="toggleMenu('m4')">
@@ -459,11 +377,11 @@ html,body{
 
         <div class="submenu" id="m4">
 
-            <a href="YOUR_LINK_HERE">Forms</a>
-            <a href="YOUR_LINK_HERE">Templates</a>
-            <a href="YOUR_LINK_HERE">Policies</a>
-            <a href="YOUR_LINK_HERE">References</a>
-            <a href="YOUR_LINK_HERE">Guidelines</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Forms</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Templates</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Policies</a>
+            <a href="YOUR_LINK_HERE" target="_blank">References</a>
+            <a href="YOUR_LINK_HERE" target="_blank">Guidelines</a>
 
         </div>
 
@@ -471,7 +389,11 @@ html,body{
 
 </div>
 
+</div>
+
 <script>
+
+/* Toggle Menus */
 
 function toggleMenu(id){
 
@@ -486,7 +408,6 @@ menu.classList.remove('active');
 
 document.getElementById(id)
 .classList.toggle('active');
-
 }
 
 /* Floating Sparks */
@@ -510,10 +431,10 @@ spark.style.animationDelay=
 Math.random()*8+"s";
 
 document.body.appendChild(spark);
-
 }
 
 </script>
 
 </body>
 </html>
+```
