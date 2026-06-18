@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Unit Portal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* Background */
+.background{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd');
+    background-size:cover;
+    background-position:center;
+    z-index:-2;
+}
+
+/* Floating Gears */
+.gear{
+    position:absolute;
+    font-size:60px;
+    opacity:.15;
+    animation:rotateGear 20s linear infinite;
+}
+
+.gear:nth-child(1){
+    top:15%;
+    left:10%;
+}
+
+.gear:nth-child(2){
+    top:65%;
+    right:10%;
+    animation-duration:30s;
+}
+
+@keyframes rotateGear{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* Header */
+
+header{
+    text-align:center;
+    padding-top:50px;
+}
+
+header h1{
+    font-size:4rem;
+    text-shadow:0 0 20px rgba(255,255,255,.8);
+}
+
+header p{
+    font-size:1.2rem;
+    margin-top:10px;
+}
+
+/* Main Buttons */
+
+.portal{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
+    margin-top:70px;
+    padding:20px;
+}
+
+.main-btn{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:none;
+    cursor:pointer;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ffffff,
+    #d7d7d7 30%,
+    #8c8c8c 70%,
+    #4d4d4d);
+
+    color:#003366;
+    font-size:1.7rem;
+    font-weight:bold;
+
+    box-shadow:
+    inset 0 10px 20px rgba(255,255,255,.6),
+    0 10px 25px rgba(0,0,0,.6);
+
+    transition:.3s;
+}
+
+.main-btn:hover{
+    transform:scale(1.08);
+}
+
+/* Submenus */
+
+.submenu{
+    display:none;
+    margin-top:20px;
+    text-align:center;
+}
+
+.submenu.active{
+    display:block;
+}
+
+.submenu a{
+    display:block;
+    margin:8px auto;
+    width:220px;
+    padding:12px;
+
+    background:#f39c12;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.submenu a:hover{
+    background:#d35400;
+    transform:translateY(-3px);
+}
+
+/* Footer */
+
+footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    text-align:center;
+    padding:12px;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(4px);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+header h1{
+    font-size:2.5rem;
+}
+
+.main-btn{
+    width:180px;
+    height:180px;
+    font-size:1.4rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="gear">⚙️</div>
+<div class="gear">⚙️</div>
+
+<header>
+    <h1>Engineering Unit</h1>
+    <p>Construction & Infrastructure Management Portal</p>
+</header>
+
+<div class="portal">
+
+    <!-- Button 1 -->
+    <div>
+        <button class="main-btn" onclick="toggleMenu('menu1')">
+            Planning
+        </button>
+
+        <div class="submenu" id="menu1">
+            <a href="https://example.com" target="_blank">Project Pipeline</a>
+            <a href="https://example.com" target="_blank">Annual Work Plan</a>
+            <a href="https://example.com" target="_blank">Project Tracker</a>
+            <a href="https://example.com" target="_blank">Feasibility Studies</a>
+            <a href="https://example.com" target="_blank">Planning Reports</a>
+        </div>
+    </div>
+
+    <!-- Button 2 -->
+    <div>
+        <button class="main-btn" onclick="toggleMenu('menu2')">
+            Design
+        </button>
+
+        <div class="submenu" id="menu2">
+            <a href="https://example.com" target="_blank">Standard Drawings</a>
+            <a href="https://example.com" target="_blank">Design Templates</a>
+            <a href="https://example.com" target="_blank">CAD Files</a>
+            <a href="https://example.com" target="_blank">Technical Manuals</a>
+            <a href="https://example.com" target="_blank">Specifications</a>
+        </div>
+    </div>
+
+    <!-- Button 3 -->
+    <div>
+        <button class="main-btn" onclick="toggleMenu('menu3')">
+            Construction
+        </button>
+
+        <div class="submenu" id="menu3">
+            <a href="https://example.com" target="_blank">Physical Progress</a>
+            <a href="https://example.com" target="_blank">Inspection Reports</a>
+            <a href="https://example.com" target="_blank">Site Monitoring</a>
+            <a href="https://example.com" target="_blank">Photo Documentation</a>
+            <a href="https://example.com" target="_blank">Completion Reports</a>
+        </div>
+    </div>
+
+    <!-- Button 4 -->
+    <div>
+        <button class="main-btn" onclick="toggleMenu('menu4')">
+            Documents
+        </button>
+
+        <div class="submenu" id="menu4">
+            <a href="https://example.com" target="_blank">Forms</a>
+            <a href="https://example.com" target="_blank">Templates</a>
+            <a href="https://example.com" target="_blank">Memorandums</a>
+            <a href="https://example.com" target="_blank">Policies</a>
+            <a href="https://example.com" target="_blank">Reference Files</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    🏗️ Engineering Unit Portal | Developed by Your Name © 2026
+</footer>
+
+<script>
+
+function toggleMenu(menuId){
+
+    const menus = document.querySelectorAll('.submenu');
+
+    menus.forEach(menu=>{
+        if(menu.id !== menuId){
+            menu.classList.remove('active');
+        }
+    });
+
+    document.getElementById(menuId)
+    .classList.toggle('active');
+}
+
+</script>
+
+</body>
+</html>
