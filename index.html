@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Engineering Unit Portal</title>
 
 <style>
@@ -11,141 +12,245 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 html,body{
     width:100%;
     height:100%;
-    background:transparent;
     overflow:hidden;
+    background:transparent;
 }
 
-/* Transparent Overlay */
+/* ===================================
+   MAIN CONTAINER
+=================================== */
 
-.portal-container{
-    position:relative;
+.portal{
     width:100vw;
     height:100vh;
-    background:transparent;
+    position:relative;
 }
 
-/* Title */
+/* ===================================
+   TITLE
+=================================== */
 
 .title{
+
     position:absolute;
     top:30px;
     left:50%;
+
     transform:translateX(-50%);
+
     color:white;
-    font-size:3rem;
-    font-weight:bold;
-    text-shadow:0 0 15px rgba(255,255,255,.8);
-    z-index:100;
+
+    font-size:4rem;
+    font-weight:700;
+
+    text-shadow:
+    0 0 10px white,
+    0 0 30px white;
+
+    z-index:1000;
 }
 
-/* Orbit Ring */
+/* ===================================
+   CENTER HUB
+=================================== */
+
+.hub{
+
+    position:absolute;
+
+    width:220px;
+    height:220px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at 30% 30%,
+    #ffffff,
+    #d0d0d0,
+    #6f6f6f);
+
+    box-shadow:
+    inset 0 10px 20px rgba(255,255,255,.8),
+    inset 0 -15px 25px rgba(0,0,0,.5),
+    0 0 60px rgba(255,255,255,.3);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:10;
+}
+
+.hub span{
+    font-size:30px;
+    font-weight:bold;
+    color:#00334d;
+    text-align:center;
+}
+
+/* ===================================
+   ORBIT RINGS
+=================================== */
 
 .orbit-ring{
+
     position:absolute;
-    top:50%;
+
     left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
     width:700px;
     height:700px;
-    transform:translate(-50%,-50%);
-    border:2px dashed rgba(255,255,255,.2);
+
     border-radius:50%;
+
+    border:2px dashed
+    rgba(255,255,255,.15);
+
+    animation:
+    ringGlow 6s infinite alternate;
 }
 
-/* Orbit System */
+@keyframes ringGlow{
+
+    from{
+        box-shadow:
+        0 0 10px rgba(255,255,255,.1);
+    }
+
+    to{
+        box-shadow:
+        0 0 40px rgba(255,255,255,.4);
+    }
+}
+
+/* ===================================
+   ORBIT SYSTEM
+=================================== */
 
 .orbit-system{
+
     position:absolute;
-    top:50%;
-    left:50%;
+
     width:700px;
     height:700px;
-    transform:translate(-50%,-50%);
-    animation:orbit 120s linear infinite;
-}
 
-/* Orbit Motion */
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    animation:
+    orbit 120s linear infinite;
+}
 
 @keyframes orbit{
+
     from{
-        transform:translate(-50%,-50%) rotate(0deg);
+        transform:
+        translate(-50%,-50%)
+        rotate(0deg);
     }
+
     to{
-        transform:translate(-50%,-50%) rotate(360deg);
+        transform:
+        translate(-50%,-50%)
+        rotate(360deg);
     }
 }
 
-/* Gear Position */
+/* ===================================
+   GEAR HOLDERS
+=================================== */
 
 .gear-holder{
     position:absolute;
 }
 
-.gear1{
-    top:-80px;
+.g1{
+    top:-85px;
     left:50%;
     transform:translateX(-50%);
 }
 
-.gear2{
-    right:-80px;
+.g2{
+    right:-85px;
     top:50%;
     transform:translateY(-50%);
 }
 
-.gear3{
-    bottom:-80px;
+.g3{
+    bottom:-85px;
     left:50%;
     transform:translateX(-50%);
 }
 
-.gear4{
-    left:-80px;
+.g4{
+    left:-85px;
     top:50%;
     transform:translateY(-50%);
 }
 
-/* Metallic Gear */
+/* ===================================
+   METALLIC GEAR
+=================================== */
 
-.gear-btn{
+.gear{
 
-    width:170px;
-    height:170px;
+    width:180px;
+    height:180px;
+
     border:none;
+
     cursor:pointer;
 
-    color:#002b45;
-    font-size:20px;
+    color:#00334d;
+
     font-weight:bold;
+    font-size:20px;
+
+    position:relative;
 
     background:
     radial-gradient(circle at 30% 30%,
     #ffffff,
-    #d7d7d7 25%,
-    #bdbdbd 40%,
-    #808080 70%,
-    #3a3a3a);
+    #dadada 20%,
+    #b8b8b8 40%,
+    #666 70%,
+    #444);
 
-    clip-path: polygon(
-    50% 0%,58% 8%,70% 5%,75% 18%,90% 20%,
-    88% 35%,100% 50%,88% 65%,90% 80%,
-    75% 82%,70% 95%,58% 92%,50% 100%,
-    42% 92%,30% 95%,25% 82%,10% 80%,
-    12% 65%,0% 50%,12% 35%,10% 20%,
-    25% 18%,30% 5%,42% 8%
+    clip-path:polygon(
+    50% 0%,58% 8%,68% 3%,76% 12%,
+    88% 12%,92% 25%,100% 35%,
+    95% 50%,100% 65%,92% 75%,
+    88% 88%,76% 88%,68% 97%,
+    58% 92%,50% 100%,42% 92%,
+    32% 97%,24% 88%,12% 88%,
+    8% 75%,0% 65%,5% 50%,
+    0% 35%,8% 25%,12% 12%,
+    24% 12%,32% 3%,42% 8%
     );
 
     box-shadow:
-    inset 0 8px 15px rgba(255,255,255,.8),
-    inset 0 -8px 15px rgba(0,0,0,.5),
-    0 0 25px rgba(255,255,255,.4);
+    inset 0 10px 15px rgba(255,255,255,.8),
+    inset 0 -10px 15px rgba(0,0,0,.6),
+    0 0 30px rgba(255,255,255,.2);
 
-    animation:gearSpin 20s linear infinite;
+    animation:
+    gearSpin 12s linear infinite;
 }
 
 @keyframes gearSpin{
@@ -157,16 +262,23 @@ html,body{
     }
 }
 
-.gear-btn:hover{
-    transform:scale(1.05);
+.gear:hover{
+
+    box-shadow:
+    0 0 50px cyan,
+    0 0 100px cyan;
+
 }
 
-/* Submenu */
+/* ===================================
+   SUBMENU
+=================================== */
 
 .submenu{
+
     display:none;
-    margin-top:10px;
-    text-align:center;
+
+    margin-top:15px;
 }
 
 .submenu.active{
@@ -176,28 +288,78 @@ html,body{
 .submenu a{
 
     display:block;
+
     width:190px;
 
-    margin:5px auto;
-    padding:10px;
+    margin:6px auto;
 
-    background:rgba(255,255,255,.9);
-    color:#003366;
+    padding:12px;
 
     text-decoration:none;
+
+    background:
+    linear-gradient(
+    180deg,
+    #f5f5f5,
+    #d9d9d9
+    );
+
+    color:#00334d;
+
     font-weight:bold;
 
-    border-radius:8px;
+    border-radius:10px;
+
+    text-align:center;
 
     transition:.3s;
 }
 
 .submenu a:hover{
-    transform:translateY(-2px);
-    background:white;
+    transform:translateY(-3px);
 }
 
-/* Mobile */
+/* ===================================
+   SPARKS
+=================================== */
+
+.spark{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+    0 0 10px white,
+    0 0 20px white;
+
+    animation:
+    floatSpark linear infinite;
+}
+
+@keyframes floatSpark{
+
+    from{
+        transform:
+        translateY(0px);
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateY(-250px);
+        opacity:0;
+    }
+}
+
+/* ===================================
+   MOBILE
+=================================== */
 
 @media(max-width:768px){
 
@@ -207,14 +369,23 @@ html,body{
 
 .orbit-ring,
 .orbit-system{
-    width:500px;
-    height:500px;
+    width:450px;
+    height:450px;
 }
 
-.gear-btn{
+.gear{
     width:120px;
     height:120px;
     font-size:14px;
+}
+
+.hub{
+    width:150px;
+    height:150px;
+}
+
+.hub span{
+    font-size:20px;
 }
 
 }
@@ -224,7 +395,7 @@ html,body{
 
 <body>
 
-<div class="portal-container">
+<div class="portal">
 
     <div class="title">
         Engineering Unit
@@ -232,103 +403,91 @@ html,body{
 
     <div class="orbit-ring"></div>
 
+    <div class="hub">
+        <span>ENGINEERING<br>UNIT</span>
+    </div>
+
     <div class="orbit-system">
 
-        <!-- PLANNING -->
+        <!-- Planning -->
 
-        <div class="gear-holder gear1">
+        <div class="gear-holder g1">
 
-            <button class="gear-btn"
-            onclick="toggleMenu('menu1')">
-            Planning
+            <button class="gear"
+            onclick="toggleMenu('m1')">
+                Planning
             </button>
 
-            <div class="submenu" id="menu1">
+            <div class="submenu" id="m1">
 
-                <a href="YOUR_LINK_HERE" target="_blank">Project Tracker</a>
-
-                <a href="YOUR_LINK_HERE" target="_blank">Annual Work Plan</a>
-
-                <a href="YOUR_LINK_HERE" target="_blank">Project Pipeline</a>
-
-                <a href="YOUR_LINK_HERE" target="_blank">Monitoring</a>
-
-                <a href="YOUR_LINK_HERE" target="_blank">Reports</a>
+                <a href="#">Tracker</a>
+                <a href="#">Pipeline</a>
+                <a href="#">Reports</a>
+                <a href="#">Schedule</a>
+                <a href="#">Monitoring</a>
 
             </div>
 
         </div>
 
-        <!-- DESIGN -->
+        <!-- Design -->
 
-        <div class="gear-holder gear2">
+        <div class="gear-holder g2">
 
-            <button class="gear-btn"
-            onclick="toggleMenu('menu2')">
-            Design
+            <button class="gear"
+            onclick="toggleMenu('m2')">
+                Design
             </button>
 
-            <div class="submenu" id="menu2">
+            <div class="submenu" id="m2">
 
-                <a href="YOUR_LINK_HERE">CAD Files</a>
-
-                <a href="YOUR_LINK_HERE">Drawings</a>
-
-                <a href="YOUR_LINK_HERE">Specifications</a>
-
-                <a href="YOUR_LINK_HERE">Templates</a>
-
-                <a href="YOUR_LINK_HERE">Manuals</a>
+                <a href="#">CAD</a>
+                <a href="#">Drawings</a>
+                <a href="#">Manuals</a>
+                <a href="#">Templates</a>
+                <a href="#">Specs</a>
 
             </div>
 
         </div>
 
-        <!-- CONSTRUCTION -->
+        <!-- Construction -->
 
-        <div class="gear-holder gear3">
+        <div class="gear-holder g3">
 
-            <button class="gear-btn"
-            onclick="toggleMenu('menu3')">
-            Construction
+            <button class="gear"
+            onclick="toggleMenu('m3')">
+                Construction
             </button>
 
-            <div class="submenu" id="menu3">
+            <div class="submenu" id="m3">
 
-                <a href="YOUR_LINK_HERE">Physical Progress</a>
-
-                <a href="YOUR_LINK_HERE">Inspection</a>
-
-                <a href="YOUR_LINK_HERE">Site Monitoring</a>
-
-                <a href="YOUR_LINK_HERE">Photo Documentation</a>
-
-                <a href="YOUR_LINK_HERE">Completion Report</a>
+                <a href="#">Progress</a>
+                <a href="#">Photos</a>
+                <a href="#">Inspection</a>
+                <a href="#">Completion</a>
+                <a href="#">Monitoring</a>
 
             </div>
 
         </div>
 
-        <!-- DOCUMENTS -->
+        <!-- Documents -->
 
-        <div class="gear-holder gear4">
+        <div class="gear-holder g4">
 
-            <button class="gear-btn"
-            onclick="toggleMenu('menu4')">
-            Documents
+            <button class="gear"
+            onclick="toggleMenu('m4')">
+                Documents
             </button>
 
-            <div class="submenu" id="menu4">
+            <div class="submenu" id="m4">
 
-                <a href="YOUR_LINK_HERE">Forms</a>
-
-                <a href="YOUR_LINK_HERE">Templates</a>
-
-                <a href="YOUR_LINK_HERE">Policies</a>
-
-                <a href="YOUR_LINK_HERE">References</a>
-
-                <a href="YOUR_LINK_HERE">Guidelines</a>
+                <a href="#">Forms</a>
+                <a href="#">Templates</a>
+                <a href="#">Policies</a>
+                <a href="#">References</a>
+                <a href="#">Guidelines</a>
 
             </div>
 
@@ -340,21 +499,44 @@ html,body{
 
 <script>
 
-function toggleMenu(menuId){
+/* Submenus */
 
-    document
-    .querySelectorAll('.submenu')
-    .forEach(menu=>{
+function toggleMenu(id){
 
-        if(menu.id !== menuId){
-            menu.classList.remove('active');
-        }
+document.querySelectorAll('.submenu')
+.forEach(menu=>{
 
-    });
+if(menu.id!==id)
+menu.classList.remove('active');
 
-    document
-    .getElementById(menuId)
-    .classList.toggle('active');
+});
+
+document
+.getElementById(id)
+.classList.toggle('active');
+}
+
+/* Floating Sparks */
+
+for(let i=0;i<60;i++){
+
+let spark=document.createElement("div");
+
+spark.classList.add("spark");
+
+spark.style.left=
+Math.random()*window.innerWidth+"px";
+
+spark.style.top=
+window.innerHeight+"px";
+
+spark.style.animationDuration=
+(5+Math.random()*10)+"s";
+
+spark.style.animationDelay=
+Math.random()*10+"s";
+
+document.body.appendChild(spark);
 }
 
 </script>
