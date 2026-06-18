@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KKB-CDD Engineering Portal</title>
+<title>KKB-CDD & PCRP Portal</title>
 
 <style>
 *{
@@ -46,12 +46,10 @@ height:3px;
 border-radius:50%;
 background:#fff8c6;
 opacity:0;
-
 box-shadow:
 0 0 4px #fff,
 0 0 8px #ffd700,
 0 0 16px #ff9500;
-
 animation:weldFly linear forwards;
 }
 
@@ -75,24 +73,21 @@ opacity:0;
 }
 
 /* ==========================
-   TITLE
+   TITLES
 ========================== */
 
 .main-title{
 position:absolute;
-top:50px;
+top:20px;
 left:50%;
 transform:translateX(-50%);
 font-size:4rem;
 font-weight:800;
 letter-spacing:8px;
 color:#fff;
-
 text-shadow:
 0 0 10px rgba(255,255,255,.8),
 0 0 30px rgba(255,255,255,.6);
-
-overflow:hidden;
 z-index:1000;
 }
 
@@ -103,7 +98,6 @@ top:0;
 left:-150%;
 width:60%;
 height:100%;
-
 background:
 linear-gradient(
 90deg,
@@ -111,7 +105,6 @@ transparent,
 rgba(255,255,255,.95),
 transparent
 );
-
 transform:skewX(-25deg);
 animation:titleSweep 5s linear infinite;
 }
@@ -121,23 +114,35 @@ from{left:-150%;}
 to{left:250%;}
 }
 
-/* ==========================
-   MENU GRID
-========================== */
-
-.menu-grid{
+.portal-wrapper{
 position:absolute;
-top:58%;
+top:55%;
 left:50%;
 transform:translate(-50%,-50%);
-display:grid;
-grid-template-columns:220px 220px;
-gap:140px 180px;
+display:flex;
+gap:260px;
 z-index:100;
 }
 
+.section{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:30px;
+}
+
+.section-title{
+font-size:2rem;
+font-weight:800;
+color:#fff;
+letter-spacing:4px;
+text-shadow:
+0 0 10px rgba(255,255,255,.8),
+0 0 20px rgba(255,255,255,.5);
+}
+
 /* ==========================
-   FLOATING HOLDERS
+   FLOATING
 ========================== */
 
 .holder{
@@ -145,28 +150,18 @@ position:relative;
 animation:floating 6s ease-in-out infinite;
 }
 
-.holder:nth-child(1){animation-duration:5s;}
-.holder:nth-child(2){animation-duration:6s;}
-.holder:nth-child(3){animation-duration:7s;}
-.holder:nth-child(4){animation-duration:5.5s;}
-
 @keyframes floating{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-18px);
-}
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
 }
 
 /* ==========================
-   HARDHAT
+   HARDHAT BUTTON
 ========================== */
 
 .hardhat{
 width:190px;
 height:110px;
-
 border:none;
 cursor:pointer;
 position:relative;
@@ -214,14 +209,7 @@ right:-18px;
 bottom:12px;
 width:70px;
 height:18px;
-
-background:
-linear-gradient(
-180deg,
-#ffcf40,
-#ff9900
-);
-
+background:linear-gradient(180deg,#ffcf40,#ff9900);
 border-radius:0 20px 20px 0;
 }
 
@@ -232,14 +220,7 @@ left:-8px;
 bottom:8px;
 width:45px;
 height:22px;
-
-background:
-linear-gradient(
-180deg,
-#ffcf40,
-#ff9900
-);
-
+background:linear-gradient(180deg,#ffcf40,#ff9900);
 border-radius:20px 0 0 20px;
 }
 
@@ -259,7 +240,6 @@ top:-50%;
 left:-150%;
 width:60px;
 height:250%;
-
 background:
 linear-gradient(
 90deg,
@@ -267,7 +247,6 @@ transparent,
 rgba(255,255,255,.9),
 transparent
 );
-
 transform:rotate(25deg);
 animation:hatSweep 4s linear infinite;
 }
@@ -283,7 +262,7 @@ animation:hatSweep 4s linear infinite;
 
 .submenu{
 display:none;
-margin-top:25px;
+margin-top:15px;
 }
 
 .submenu.active{
@@ -295,15 +274,11 @@ display:block;
 width:190px;
 margin:6px auto;
 padding:10px;
-
 text-decoration:none;
 text-align:center;
 font-weight:bold;
-
 color:#00334d;
-
 border-radius:10px;
-
 background:
 linear-gradient(
 180deg,
@@ -312,22 +287,46 @@ linear-gradient(
 );
 }
 
-/* ==========================
-   MOBILE
-========================== */
+.dashboard-panel{
+display:none;
+margin-top:15px;
+background:#fff;
+border-radius:12px;
+padding:8px;
+box-shadow:0 0 20px rgba(255,255,255,.25);
+}
+
+.dashboard-panel.active{
+display:block;
+}
+
+.dashboard-panel iframe{
+width:600px;
+height:350px;
+border:none;
+border-radius:8px;
+}
 
 @media(max-width:768px){
+
+body{
+overflow:auto;
+}
+
+.portal-wrapper{
+flex-direction:column;
+gap:100px;
+top:65%;
+}
 
 .main-title{
 font-size:2rem;
 }
 
-.menu-grid{
-grid-template-columns:1fr;
-gap:90px;
-top:60%;
+.dashboard-panel iframe{
+width:90vw;
+height:300px;
 }
-
 }
 </style>
 </head>
@@ -338,19 +337,22 @@ top:60%;
 
 <div id="welding-zone"></div>
 
-<div class="main-title">
-KKB-CDD
-</div>
+<div class="main-title">ENGINEERING PORTAL</div>
 
-<div class="menu-grid">
+<div class="portal-wrapper">
+
+<!-- =======================
+     KKB-CDD
+======================== -->
+<div class="section">
+
+<div class="section-title">KKB-CDD</div>
 
 <div class="holder">
 <button class="hardhat" onclick="toggleMenu('m1')">
-<div class="shine"></div>
-<div class="ridge"></div>
+<div class="shine"></div><div class="ridge"></div>
 Planning
 </button>
-
 <div class="submenu" id="m1">
 <a href="#">Project Tracker</a>
 <a href="#">Work Plan</a>
@@ -362,50 +364,84 @@ Planning
 
 <div class="holder">
 <button class="hardhat" onclick="toggleMenu('m2')">
-<div class="shine"></div>
-<div class="ridge"></div>
+<div class="shine"></div><div class="ridge"></div>
 Design
 </button>
-
 <div class="submenu" id="m2">
 <a href="#">CAD Files</a>
 <a href="#">Drawings</a>
 <a href="#">Manuals</a>
 <a href="#">Templates</a>
-<a href="#">Specifications</a>
 </div>
 </div>
 
 <div class="holder">
 <button class="hardhat" onclick="toggleMenu('m3')">
-<div class="shine"></div>
-<div class="ridge"></div>
+<div class="shine"></div><div class="ridge"></div>
 Construction
 </button>
-
 <div class="submenu" id="m3">
 <a href="#">Progress</a>
 <a href="#">Inspection</a>
 <a href="#">Monitoring</a>
-<a href="#">Photos</a>
-<a href="#">Completion</a>
 </div>
 </div>
 
 <div class="holder">
 <button class="hardhat" onclick="toggleMenu('m4')">
-<div class="shine"></div>
-<div class="ridge"></div>
+<div class="shine"></div><div class="ridge"></div>
 Documents
 </button>
-
 <div class="submenu" id="m4">
 <a href="#">Forms</a>
 <a href="#">Templates</a>
 <a href="#">Policies</a>
-<a href="#">References</a>
 <a href="#">Guidelines</a>
 </div>
+</div>
+
+</div>
+
+<!-- =======================
+     PCRP
+======================== -->
+<div class="section">
+
+<div class="section-title">PCRP</div>
+
+<div class="holder">
+<button class="hardhat" onclick="toggleMenu('p1')">
+<div class="shine"></div><div class="ridge"></div>
+Monitoring
+</button>
+<div class="submenu" id="p1">
+<a href="#" target="_blank">Monitoring Sheet 1</a>
+<a href="#" target="_blank">Monitoring Sheet 2</a>
+</div>
+</div>
+
+<div class="holder">
+<button class="hardhat" onclick="toggleMenu('p2')">
+<div class="shine"></div><div class="ridge"></div>
+Reports
+</button>
+<div class="submenu" id="p2">
+<a href="#" target="_blank">Monthly Report</a>
+<a href="#" target="_blank">Consolidated Report</a>
+</div>
+</div>
+
+<div class="holder">
+<button class="hardhat" onclick="toggleDashboard()">
+<div class="shine"></div><div class="ridge"></div>
+Dashboard
+</button>
+
+<div class="dashboard-panel" id="dashboardPanel">
+<iframe src="about:blank"></iframe>
+</div>
+</div>
+
 </div>
 
 </div>
@@ -416,7 +452,7 @@ Documents
 function toggleMenu(id){
 
 document.querySelectorAll('.submenu').forEach(menu=>{
-if(menu.id!==id){
+if(menu.id !== id){
 menu.classList.remove('active');
 }
 });
@@ -424,14 +460,23 @@ menu.classList.remove('active');
 document.getElementById(id).classList.toggle('active');
 }
 
-/* ==========================
-   WELDING SPARKS
-========================== */
+function toggleDashboard(){
+
+document.querySelectorAll('.submenu').forEach(menu=>{
+menu.classList.remove('active');
+});
+
+document
+.getElementById('dashboardPanel')
+.classList.toggle('active');
+}
+
+/* Welding Sparks */
 
 const weldZone =
 document.getElementById('welding-zone');
 
-const weldingPoints = [
+const weldingPoints=[
 {x:0.12,y:0.80},
 {x:0.85,y:0.25},
 {x:0.50,y:0.92}
@@ -439,36 +484,36 @@ const weldingPoints = [
 
 function createWeldBurst(){
 
-const p =
+const p=
 weldingPoints[
 Math.floor(Math.random()*weldingPoints.length)
 ];
 
-const sourceX =
-window.innerWidth * p.x;
+const sourceX=
+window.innerWidth*p.x;
 
-const sourceY =
-window.innerHeight * p.y;
+const sourceY=
+window.innerHeight*p.y;
 
 for(let i=0;i<18;i++){
 
-const spark =
+const spark=
 document.createElement('div');
 
 spark.className='weld-spark';
 
-spark.style.left =
-sourceX + 'px';
+spark.style.left=
+sourceX+'px';
 
-spark.style.top =
-sourceY + 'px';
+spark.style.top=
+sourceY+'px';
 
-const angle =
-(-95 + Math.random()*80)
-* (Math.PI/180);
+const angle=
+(-95+Math.random()*80)*
+(Math.PI/180);
 
-const distance =
-80 + Math.random()*260;
+const distance=
+80+Math.random()*260;
 
 spark.style.setProperty(
 '--dx',
@@ -480,8 +525,8 @@ spark.style.setProperty(
 Math.sin(angle)*distance
 );
 
-spark.style.animationDuration =
-(0.5 + Math.random()*0.8) + 's';
+spark.style.animationDuration=
+(0.5+Math.random()*0.8)+'s';
 
 weldZone.appendChild(spark);
 
