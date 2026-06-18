@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KKB-CDD</title>
+<title>Engineering Unit Portal</title>
 
 <style>
 
@@ -14,113 +14,158 @@
     font-family:Arial, sans-serif;
 }
 
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-    color:white;
-}
-
-/* Background */
-.background{
-    position:fixed;
-    top:0;
-    left:0;
+html,body{
     width:100%;
     height:100%;
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url('https://images.unsplash.com/photo-1504307651254-35680f356dfd');
-    background-size:cover;
-    background-position:center;
-    z-index:-2;
+    background:transparent;
+    overflow:hidden;
 }
 
-/* Floating Gears */
-.gear{
+/* Transparent Overlay */
+
+.portal-container{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    background:transparent;
+}
+
+/* Title */
+
+.title{
     position:absolute;
-    font-size:60px;
-    opacity:.15;
-    animation:rotateGear 20s linear infinite;
+    top:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:3rem;
+    font-weight:bold;
+    text-shadow:0 0 15px rgba(255,255,255,.8);
+    z-index:100;
 }
 
-.gear:nth-child(1){
-    top:15%;
-    left:10%;
-}
+/* Orbit Ring */
 
-.gear:nth-child(2){
-    top:65%;
-    right:10%;
-    animation-duration:30s;
-}
-
-@keyframes rotateGear{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
-}
-
-/* Header */
-
-header{
-    text-align:center;
-    padding-top:50px;
-}
-
-header h1{
-    font-size:4rem;
-    text-shadow:0 0 20px rgba(255,255,255,.8);
-}
-
-header p{
-    font-size:1.2rem;
-    margin-top:10px;
-}
-
-/* Main Buttons */
-
-.portal{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:40px;
-    margin-top:70px;
-    padding:20px;
-}
-
-.main-btn{
-    width:220px;
-    height:220px;
+.orbit-ring{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:700px;
+    height:700px;
+    transform:translate(-50%,-50%);
+    border:2px dashed rgba(255,255,255,.2);
     border-radius:50%;
+}
+
+/* Orbit System */
+
+.orbit-system{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:700px;
+    height:700px;
+    transform:translate(-50%,-50%);
+    animation:orbit 120s linear infinite;
+}
+
+/* Orbit Motion */
+
+@keyframes orbit{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+/* Gear Position */
+
+.gear-holder{
+    position:absolute;
+}
+
+.gear1{
+    top:-80px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.gear2{
+    right:-80px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.gear3{
+    bottom:-80px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.gear4{
+    left:-80px;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+/* Metallic Gear */
+
+.gear-btn{
+
+    width:170px;
+    height:170px;
     border:none;
     cursor:pointer;
+
+    color:#002b45;
+    font-size:20px;
+    font-weight:bold;
 
     background:
     radial-gradient(circle at 30% 30%,
     #ffffff,
-    #d7d7d7 30%,
-    #8c8c8c 70%,
-    #4d4d4d);
+    #d7d7d7 25%,
+    #bdbdbd 40%,
+    #808080 70%,
+    #3a3a3a);
 
-    color:#003366;
-    font-size:1.7rem;
-    font-weight:bold;
+    clip-path: polygon(
+    50% 0%,58% 8%,70% 5%,75% 18%,90% 20%,
+    88% 35%,100% 50%,88% 65%,90% 80%,
+    75% 82%,70% 95%,58% 92%,50% 100%,
+    42% 92%,30% 95%,25% 82%,10% 80%,
+    12% 65%,0% 50%,12% 35%,10% 20%,
+    25% 18%,30% 5%,42% 8%
+    );
 
     box-shadow:
-    inset 0 10px 20px rgba(255,255,255,.6),
-    0 10px 25px rgba(0,0,0,.6);
+    inset 0 8px 15px rgba(255,255,255,.8),
+    inset 0 -8px 15px rgba(0,0,0,.5),
+    0 0 25px rgba(255,255,255,.4);
 
-    transition:.3s;
+    animation:gearSpin 20s linear infinite;
 }
 
-.main-btn:hover{
-    transform:scale(1.08);
+@keyframes gearSpin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(-360deg);
+    }
 }
 
-/* Submenus */
+.gear-btn:hover{
+    transform:scale(1.05);
+}
+
+/* Submenu */
 
 .submenu{
     display:none;
-    margin-top:20px;
+    margin-top:10px;
     text-align:center;
 }
 
@@ -129,49 +174,47 @@ header p{
 }
 
 .submenu a{
-    display:block;
-    margin:8px auto;
-    width:220px;
-    padding:12px;
 
-    background:#f39c12;
-    color:white;
+    display:block;
+    width:190px;
+
+    margin:5px auto;
+    padding:10px;
+
+    background:rgba(255,255,255,.9);
+    color:#003366;
+
     text-decoration:none;
-    border-radius:10px;
     font-weight:bold;
+
+    border-radius:8px;
 
     transition:.3s;
 }
 
 .submenu a:hover{
-    background:#d35400;
-    transform:translateY(-3px);
+    transform:translateY(-2px);
+    background:white;
 }
 
-/* Footer */
-
-footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    text-align:center;
-    padding:12px;
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(4px);
-}
-
-/* Responsive */
+/* Mobile */
 
 @media(max-width:768px){
 
-header h1{
-    font-size:2.5rem;
+.title{
+    font-size:2rem;
 }
 
-.main-btn{
-    width:180px;
-    height:180px;
-    font-size:1.4rem;
+.orbit-ring,
+.orbit-system{
+    width:500px;
+    height:500px;
+}
+
+.gear-btn{
+    width:120px;
+    height:120px;
+    font-size:14px;
 }
 
 }
@@ -181,97 +224,136 @@ header h1{
 
 <body>
 
-<div class="background"></div>
+<div class="portal-container">
 
-<div class="gear">⚙️</div>
-<div class="gear">⚙️</div>
+    <div class="title">
+        Engineering Unit
+    </div>
 
-<header>
-    <h1>KKB-CDD</h1>
-    <p>——————————</p>
-</header>
+    <div class="orbit-ring"></div>
 
-<div class="portal">
+    <div class="orbit-system">
 
-    <!-- Button 1 -->
-    <div>
-        <button class="main-btn" onclick="toggleMenu('menu1')">
+        <!-- PLANNING -->
+
+        <div class="gear-holder gear1">
+
+            <button class="gear-btn"
+            onclick="toggleMenu('menu1')">
             Planning
-        </button>
+            </button>
 
-        <div class="submenu" id="menu1">
-            <a href="https://example.com" target="_blank">Project Pipeline</a>
-            <a href="https://example.com" target="_blank">Annual Work Plan</a>
-            <a href="https://example.com" target="_blank">Project Tracker</a>
-            <a href="https://example.com" target="_blank">Feasibility Studies</a>
-            <a href="https://example.com" target="_blank">Planning Reports</a>
+            <div class="submenu" id="menu1">
+
+                <a href="YOUR_LINK_HERE" target="_blank">Project Tracker</a>
+
+                <a href="YOUR_LINK_HERE" target="_blank">Annual Work Plan</a>
+
+                <a href="YOUR_LINK_HERE" target="_blank">Project Pipeline</a>
+
+                <a href="YOUR_LINK_HERE" target="_blank">Monitoring</a>
+
+                <a href="YOUR_LINK_HERE" target="_blank">Reports</a>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Button 2 -->
-    <div>
-        <button class="main-btn" onclick="toggleMenu('menu2')">
+        <!-- DESIGN -->
+
+        <div class="gear-holder gear2">
+
+            <button class="gear-btn"
+            onclick="toggleMenu('menu2')">
             Design
-        </button>
+            </button>
 
-        <div class="submenu" id="menu2">
-            <a href="https://example.com" target="_blank">Standard Drawings</a>
-            <a href="https://example.com" target="_blank">Design Templates</a>
-            <a href="https://example.com" target="_blank">CAD Files</a>
-            <a href="https://example.com" target="_blank">Technical Manuals</a>
-            <a href="https://example.com" target="_blank">Specifications</a>
+            <div class="submenu" id="menu2">
+
+                <a href="YOUR_LINK_HERE">CAD Files</a>
+
+                <a href="YOUR_LINK_HERE">Drawings</a>
+
+                <a href="YOUR_LINK_HERE">Specifications</a>
+
+                <a href="YOUR_LINK_HERE">Templates</a>
+
+                <a href="YOUR_LINK_HERE">Manuals</a>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Button 3 -->
-    <div>
-        <button class="main-btn" onclick="toggleMenu('menu3')">
+        <!-- CONSTRUCTION -->
+
+        <div class="gear-holder gear3">
+
+            <button class="gear-btn"
+            onclick="toggleMenu('menu3')">
             Construction
-        </button>
+            </button>
 
-        <div class="submenu" id="menu3">
-            <a href="https://example.com" target="_blank">Physical Progress</a>
-            <a href="https://example.com" target="_blank">Inspection Reports</a>
-            <a href="https://example.com" target="_blank">Site Monitoring</a>
-            <a href="https://example.com" target="_blank">Photo Documentation</a>
-            <a href="https://example.com" target="_blank">Completion Reports</a>
+            <div class="submenu" id="menu3">
+
+                <a href="YOUR_LINK_HERE">Physical Progress</a>
+
+                <a href="YOUR_LINK_HERE">Inspection</a>
+
+                <a href="YOUR_LINK_HERE">Site Monitoring</a>
+
+                <a href="YOUR_LINK_HERE">Photo Documentation</a>
+
+                <a href="YOUR_LINK_HERE">Completion Report</a>
+
+            </div>
+
         </div>
-    </div>
 
-    <!-- Button 4 -->
-    <div>
-        <button class="main-btn" onclick="toggleMenu('menu4')">
+        <!-- DOCUMENTS -->
+
+        <div class="gear-holder gear4">
+
+            <button class="gear-btn"
+            onclick="toggleMenu('menu4')">
             Documents
-        </button>
+            </button>
 
-        <div class="submenu" id="menu4">
-            <a href="https://example.com" target="_blank">Forms</a>
-            <a href="https://example.com" target="_blank">Templates</a>
-            <a href="https://example.com" target="_blank">Memorandums</a>
-            <a href="https://example.com" target="_blank">Policies</a>
-            <a href="https://example.com" target="_blank">Reference Files</a>
+            <div class="submenu" id="menu4">
+
+                <a href="YOUR_LINK_HERE">Forms</a>
+
+                <a href="YOUR_LINK_HERE">Templates</a>
+
+                <a href="YOUR_LINK_HERE">Policies</a>
+
+                <a href="YOUR_LINK_HERE">References</a>
+
+                <a href="YOUR_LINK_HERE">Guidelines</a>
+
+            </div>
+
         </div>
+
     </div>
 
 </div>
-
-<footer>
-    KKB-CDD | Developed by Ghilous © 2026
-</footer>
 
 <script>
 
 function toggleMenu(menuId){
 
-    const menus = document.querySelectorAll('.submenu');
+    document
+    .querySelectorAll('.submenu')
+    .forEach(menu=>{
 
-    menus.forEach(menu=>{
         if(menu.id !== menuId){
             menu.classList.remove('active');
         }
+
     });
 
-    document.getElementById(menuId)
+    document
+    .getElementById(menuId)
     .classList.toggle('active');
 }
 
