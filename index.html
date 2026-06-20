@@ -6,112 +6,29 @@
 <title>KKB-CDD & PCRP Portal</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden;}
 
-html,body{
-width:100%;
-height:100%;
-background:transparent;
-overflow:hidden;
-}
-
-.portal{
-position:relative;
-width:100vw;
-height:100vh;
-overflow:hidden;
-}
-
-/* ==========================
-   WELDING SPARKS
-========================== */
+.portal{position:relative;width:100vw;height:100vh;overflow:hidden;}
 
 #welding-zone{
-position:absolute;
-inset:0;
-pointer-events:none;
-overflow:hidden;
-z-index:1;
+position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;
 }
 
 .weld-spark{
-position:absolute;
-width:3px;
-height:3px;
-border-radius:50%;
-background:#fff8c6;
-opacity:0;
-box-shadow:
-0 0 4px #fff,
-0 0 8px #ffd700,
-0 0 16px #ff9500;
+position:absolute;width:3px;height:3px;border-radius:50%;
+background:#fff8c6;opacity:0;
+box-shadow:0 0 4px #fff,0 0 8px #ffd700,0 0 16px #ff9500;
 animation:weldFly linear forwards;
 }
 
 @keyframes weldFly{
-0%{
-transform:translate(0,0) scale(1);
-opacity:1;
-}
-15%{
-opacity:1;
-}
+0%{transform:translate(0,0) scale(1);opacity:1;}
+15%{opacity:1;}
 100%{
-transform:
-translate(
-calc(var(--dx) * 1px),
-calc(var(--dy) * 1px)
-)
-scale(.15);
+transform:translate(calc(var(--dx)*1px),calc(var(--dy)*1px)) scale(.15);
 opacity:0;
 }
-}
-
-/* ==========================
-   TITLES
-========================== */
-
-.main-title{
-position:absolute;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-font-size:4rem;
-font-weight:800;
-letter-spacing:8px;
-color:#fff;
-text-shadow:
-0 0 10px rgba(255,255,255,.8),
-0 0 30px rgba(255,255,255,.6);
-z-index:1000;
-}
-
-.main-title::after{
-content:"";
-position:absolute;
-top:0;
-left:-150%;
-width:60%;
-height:100%;
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.95),
-transparent
-);
-transform:skewX(-25deg);
-animation:titleSweep 5s linear infinite;
-}
-
-@keyframes titleSweep{
-from{left:-150%;}
-to{left:250%;}
 }
 
 .portal-wrapper{
@@ -136,14 +53,32 @@ font-size:2rem;
 font-weight:800;
 color:#fff;
 letter-spacing:4px;
-text-shadow:
-0 0 10px rgba(255,255,255,.8),
-0 0 20px rgba(255,255,255,.5);
+text-shadow:0 0 10px rgba(255,255,255,.8),0 0 20px rgba(255,255,255,.5);
 }
 
-/* ==========================
-   FLOATING
-========================== */
+.kkb-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:40px 60px;
+justify-items:center;
+}
+
+.pcrp-triangle{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:50px;
+}
+
+.pcrp-top{
+display:flex;
+gap:60px;
+}
+
+.pcrp-bottom{
+display:flex;
+justify-content:center;
+}
 
 .holder{
 position:relative;
@@ -155,10 +90,6 @@ animation:floating 6s ease-in-out infinite;
 50%{transform:translateY(-15px);}
 }
 
-/* ==========================
-   HARDHAT BUTTON
-========================== */
-
 .hardhat{
 width:190px;
 height:110px;
@@ -166,40 +97,23 @@ border:none;
 cursor:pointer;
 position:relative;
 overflow:hidden;
-
 color:#00334d;
 font-size:18px;
 font-weight:700;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
-background:
-linear-gradient(
-180deg,
-#ffe57a 0%,
-#ffc933 35%,
-#ffae00 100%
-);
-
-border-radius:
-120px 90px 50px 30px /
-90px 90px 40px 40px;
-
-box-shadow:
-inset 0 8px 12px rgba(255,255,255,.6),
+background:linear-gradient(180deg,#ffe57a 0%,#ffc933 35%,#ffae00 100%);
+border-radius:120px 90px 50px 30px / 90px 90px 40px 40px;
+box-shadow:inset 0 8px 12px rgba(255,255,255,.6),
 inset 0 -10px 12px rgba(0,0,0,.18),
 0 10px 25px rgba(0,0,0,.35);
-
 transition:.3s;
 }
 
 .hardhat:hover{
 transform:scale(1.05);
-box-shadow:
-0 0 20px rgba(255,215,0,.8),
-0 0 40px rgba(255,215,0,.4);
+box-shadow:0 0 20px rgba(255,215,0,.8),0 0 40px rgba(255,215,0,.4);
 }
 
 .hardhat::before{
@@ -240,13 +154,7 @@ top:-50%;
 left:-150%;
 width:60px;
 height:250%;
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.9),
-transparent
-);
+background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);
 transform:rotate(25deg);
 animation:hatSweep 4s linear infinite;
 }
@@ -256,18 +164,8 @@ animation:hatSweep 4s linear infinite;
 100%{left:250%;}
 }
 
-/* ==========================
-   SUBMENUS
-========================== */
-
-.submenu{
-display:none;
-margin-top:15px;
-}
-
-.submenu.active{
-display:block;
-}
+.submenu{display:none;margin-top:15px;}
+.submenu.active{display:block;}
 
 .submenu a{
 display:block;
@@ -279,12 +177,7 @@ text-align:center;
 font-weight:bold;
 color:#00334d;
 border-radius:10px;
-background:
-linear-gradient(
-180deg,
-#ffffff,
-#dddddd
-);
+background:linear-gradient(180deg,#ffffff,#dddddd);
 }
 
 .dashboard-panel{
@@ -296,9 +189,7 @@ padding:8px;
 box-shadow:0 0 20px rgba(255,255,255,.25);
 }
 
-.dashboard-panel.active{
-display:block;
-}
+.dashboard-panel.active{display:block;}
 
 .dashboard-panel iframe{
 width:600px;
@@ -308,25 +199,11 @@ border-radius:8px;
 }
 
 @media(max-width:768px){
-
-body{
-overflow:auto;
-}
-
-.portal-wrapper{
-flex-direction:column;
-gap:100px;
-top:65%;
-}
-
-.main-title{
-font-size:2rem;
-}
-
-.dashboard-panel iframe{
-width:90vw;
-height:300px;
-}
+body{overflow:auto;}
+.portal-wrapper{flex-direction:column;gap:100px;top:65%;}
+.kkb-grid{grid-template-columns:1fr;}
+.pcrp-top{flex-direction:column;}
+.dashboard-panel iframe{width:90vw;height:300px;}
 }
 </style>
 </head>
@@ -337,22 +214,15 @@ height:300px;
 
 <div id="welding-zone"></div>
 
-<div class="main-title">ENGINEERING PORTAL</div>
-
 <div class="portal-wrapper">
 
-<!-- =======================
-     KKB-CDD
-======================== -->
 <div class="section">
-
 <div class="section-title">KKB-CDD</div>
 
+<div class="kkb-grid">
+
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m1')">
-<div class="shine"></div><div class="ridge"></div>
-Planning
-</button>
+<button class="hardhat" onclick="toggleMenu('m1')"><div class="shine"></div><div class="ridge"></div>Planning</button>
 <div class="submenu" id="m1">
 <a href="#">Project Tracker</a>
 <a href="#">Work Plan</a>
@@ -363,10 +233,7 @@ Planning
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m2')">
-<div class="shine"></div><div class="ridge"></div>
-Design
-</button>
+<button class="hardhat" onclick="toggleMenu('m2')"><div class="shine"></div><div class="ridge"></div>Design</button>
 <div class="submenu" id="m2">
 <a href="#">CAD Files</a>
 <a href="#">Drawings</a>
@@ -376,10 +243,7 @@ Design
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m3')">
-<div class="shine"></div><div class="ridge"></div>
-Construction
-</button>
+<button class="hardhat" onclick="toggleMenu('m3')"><div class="shine"></div><div class="ridge"></div>Construction</button>
 <div class="submenu" id="m3">
 <a href="#">Progress</a>
 <a href="#">Inspection</a>
@@ -388,10 +252,7 @@ Construction
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m4')">
-<div class="shine"></div><div class="ridge"></div>
-Documents
-</button>
+<button class="hardhat" onclick="toggleMenu('m4')"><div class="shine"></div><div class="ridge"></div>Documents</button>
 <div class="submenu" id="m4">
 <a href="#">Forms</a>
 <a href="#">Templates</a>
@@ -401,80 +262,62 @@ Documents
 </div>
 
 </div>
+</div>
 
-<!-- =======================
-     PCRP
-======================== -->
 <div class="section">
-
 <div class="section-title">PCRP</div>
 
+<div class="pcrp-triangle">
+
+<div class="pcrp-top">
+
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('p1')">
-<div class="shine"></div><div class="ridge"></div>
-Monitoring
-</button>
+<button class="hardhat" onclick="toggleMenu('p1')"><div class="shine"></div><div class="ridge"></div>Monitoring</button>
 <div class="submenu" id="p1">
-<a href="#" target="_blank">Monitoring Sheet 1</a>
-<a href="#" target="_blank">Monitoring Sheet 2</a>
+<a href="#">Monitoring Sheet 1</a>
+<a href="#">Monitoring Sheet 2</a>
 </div>
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('p2')">
-<div class="shine"></div><div class="ridge"></div>
-Reports
-</button>
+<button class="hardhat" onclick="toggleMenu('p2')"><div class="shine"></div><div class="ridge"></div>Reports</button>
 <div class="submenu" id="p2">
-<a href="#" target="_blank">Monthly Report</a>
-<a href="#" target="_blank">Consolidated Report</a>
+<a href="#">Monthly Report</a>
+<a href="#">Consolidated Report</a>
 </div>
 </div>
 
+</div>
+
+<div class="pcrp-bottom">
 <div class="holder">
-<button class="hardhat" onclick="toggleDashboard()">
-<div class="shine"></div><div class="ridge"></div>
-Dashboard
-</button>
-
+<button class="hardhat" onclick="toggleDashboard()"><div class="shine"></div><div class="ridge"></div>Dashboard</button>
 <div class="dashboard-panel" id="dashboardPanel">
 <iframe src="about:blank"></iframe>
 </div>
 </div>
+</div>
 
+</div>
 </div>
 
 </div>
 </div>
 
 <script>
-
 function toggleMenu(id){
-
 document.querySelectorAll('.submenu').forEach(menu=>{
-if(menu.id !== id){
-menu.classList.remove('active');
-}
+if(menu.id!==id){menu.classList.remove('active');}
 });
-
 document.getElementById(id).classList.toggle('active');
 }
 
 function toggleDashboard(){
-
-document.querySelectorAll('.submenu').forEach(menu=>{
-menu.classList.remove('active');
-});
-
-document
-.getElementById('dashboardPanel')
-.classList.toggle('active');
+document.querySelectorAll('.submenu').forEach(menu=>menu.classList.remove('active'));
+document.getElementById('dashboardPanel').classList.toggle('active');
 }
 
-/* Welding Sparks */
-
-const weldZone =
-document.getElementById('welding-zone');
+const weldZone=document.getElementById('welding-zone');
 
 const weldingPoints=[
 {x:0.12,y:0.80},
@@ -483,62 +326,29 @@ const weldingPoints=[
 ];
 
 function createWeldBurst(){
-
-const p=
-weldingPoints[
-Math.floor(Math.random()*weldingPoints.length)
-];
-
-const sourceX=
-window.innerWidth*p.x;
-
-const sourceY=
-window.innerHeight*p.y;
+const p=weldingPoints[Math.floor(Math.random()*weldingPoints.length)];
+const sourceX=window.innerWidth*p.x;
+const sourceY=window.innerHeight*p.y;
 
 for(let i=0;i<18;i++){
-
-const spark=
-document.createElement('div');
-
+const spark=document.createElement('div');
 spark.className='weld-spark';
+spark.style.left=sourceX+'px';
+spark.style.top=sourceY+'px';
 
-spark.style.left=
-sourceX+'px';
+const angle=(-95+Math.random()*80)*(Math.PI/180);
+const distance=80+Math.random()*260;
 
-spark.style.top=
-sourceY+'px';
-
-const angle=
-(-95+Math.random()*80)*
-(Math.PI/180);
-
-const distance=
-80+Math.random()*260;
-
-spark.style.setProperty(
-'--dx',
-Math.cos(angle)*distance
-);
-
-spark.style.setProperty(
-'--dy',
-Math.sin(angle)*distance
-);
-
-spark.style.animationDuration=
-(0.5+Math.random()*0.8)+'s';
+spark.style.setProperty('--dx',Math.cos(angle)*distance);
+spark.style.setProperty('--dy',Math.sin(angle)*distance);
+spark.style.animationDuration=(0.5+Math.random()*0.8)+'s';
 
 weldZone.appendChild(spark);
-
-spark.addEventListener(
-'animationend',
-()=>spark.remove()
-);
+spark.addEventListener('animationend',()=>spark.remove());
 }
 }
 
 setInterval(createWeldBurst,120);
-
 </script>
 
 </body>
