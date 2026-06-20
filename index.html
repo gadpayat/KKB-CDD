@@ -462,15 +462,13 @@ Manuals and Tools
 </div>
 
 <div class="holder">
-<button class="hardhat pcrp-hat" onclick="toggleMenu('p2')">
+
+<button class="hardhat pcrp-hat" onclick="togglePresentationDashboard()">
 <div class="shine"></div>
 <div class="ridge"></div>
 Presentations
 </button>
 
-<div class="submenu" id="p2">
-<a href="#">Monthly Report</a>
-<a href="#">Consolidated Report</a>
 </div>
 </div>
 
@@ -504,7 +502,16 @@ Design References
 <iframe src="https://gadpayat.github.io/SP-Tech-Design-Ref/"></iframe>
 
 </div>
+    
+<!-- PCRP Presentations Dashboard -->
 
+<div class="fullscreen-dashboard" id="presentationPanel">
+
+<button class="close-btn" onclick="closePresentationDashboard()">✕</button>
+
+<iframe src="https://gadpayat.github.io/Module-Presentation/"></iframe>
+
+</div>
 </div>
 
 <script>
@@ -535,6 +542,24 @@ function closeDashboard(){
 
     document
     .getElementById('dashboardPanel')
+    .classList.remove('active');
+}
+
+function togglePresentationDashboard(){
+
+    document
+    .querySelectorAll('.submenu')
+    .forEach(menu=>menu.classList.remove('active'));
+
+    document
+    .getElementById('presentationPanel')
+    .classList.add('active');
+}
+
+function closePresentationDashboard(){
+
+    document
+    .getElementById('presentationPanel')
     .classList.remove('active');
 }
 
