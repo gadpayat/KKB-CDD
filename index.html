@@ -6,245 +6,355 @@
 <title>KKB-CDD & PCRP Portal</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
-html,body{width:100%;height:100%;background:transparent;overflow:hidden;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-.portal{position:relative;width:100vw;height:100vh;overflow:hidden;}
+html,body{
+    width:100%;
+    height:100%;
+    background:transparent;
+    overflow:hidden;
+}
 
+.portal{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Welding Sparks */
 #welding-zone{
-position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
 }
 
 .weld-spark{
-position:absolute;width:3px;height:3px;border-radius:50%;
-background:#fff8c6;opacity:0;
-box-shadow:0 0 4px #fff,0 0 8px #ffd700,0 0 16px #ff9500;
-animation:weldFly linear forwards;
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff8c6;
+    opacity:0;
+    box-shadow:
+        0 0 4px #fff,
+        0 0 8px #ffd700,
+        0 0 16px #ff9500;
+    animation:weldFly linear forwards;
 }
 
 @keyframes weldFly{
-0%{transform:translate(0,0) scale(1);opacity:1;}
-15%{opacity:1;}
-100%{
-transform:translate(calc(var(--dx)*1px),calc(var(--dy)*1px)) scale(.15);
-opacity:0;
-}
+    0%{
+        transform:translate(0,0) scale(1);
+        opacity:1;
+    }
+    15%{opacity:1;}
+    100%{
+        transform:
+        translate(
+        calc(var(--dx)*1px),
+        calc(var(--dy)*1px))
+        scale(.15);
+        opacity:0;
+    }
 }
 
+/* Portal Layout */
+
 .portal-wrapper{
-position:absolute;
-top:55%;
-left:50%;
-transform:translate(-50%,-50%);
-display:flex;
-gap:260px;
-z-index:100;
+    position:absolute;
+    top:55%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    gap:260px;
+    z-index:100;
 }
 
 .section{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:60px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:60px;
 }
 
 .section-title{
-font-size:2rem;
-font-weight:800;
-color:#fff;
-letter-spacing:4px;
-text-shadow:0 0 10px rgba(255,255,255,.8),0 0 20px rgba(255,255,255,.5);
+    font-size:2rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:4px;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.8),
+        0 0 20px rgba(255,255,255,.5);
 }
 
 .kkb-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:40px 60px;
-justify-items:center;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px 60px;
+    justify-items:center;
 }
 
 .pcrp-triangle{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:50px;
 }
 
 .pcrp-top{
-display:flex;
-gap:60px;
+    display:flex;
+    gap:60px;
 }
 
 .pcrp-bottom{
-display:flex;
-justify-content:center;
+    display:flex;
+    justify-content:center;
 }
 
 .holder{
-position:relative;
-animation:floating 6s ease-in-out infinite;
+    position:relative;
+    animation:floating 6s ease-in-out infinite;
 }
 
 @keyframes floating{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
 }
+
+/* Hardhat Buttons */
 
 .hardhat{
-width:190px;
-height:110px;
-border:none;
-cursor:pointer;
-position:relative;
-overflow:hidden;
-color:#00334d;
-font-size:18px;
-font-weight:700;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(180deg,#ffe57a 0%,#ffc933 35%,#ffae00 100%);
-border-radius:120px 90px 50px 30px / 90px 90px 40px 40px;
-box-shadow:inset 0 8px 12px rgba(255,255,255,.6),
-inset 0 -10px 12px rgba(0,0,0,.18),
-0 10px 25px rgba(0,0,0,.35);
-transition:.3s;
-}
-  
-.pcrp-hat{
-background:
-linear-gradient(
-180deg,
-#8fd3ff 0%,
-#3399ff 35%,
-#0066cc 100%
-);
+    width:190px;
+    height:110px;
+    border:none;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    color:#00334d;
+    font-size:18px;
+    font-weight:700;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-color:white;
+    background:
+    linear-gradient(
+    180deg,
+    #ffe57a 0%,
+    #ffc933 35%,
+    #ffae00 100%
+    );
 
-box-shadow:
-inset 0 8px 12px rgba(255,255,255,.5),
-inset 0 -10px 12px rgba(0,0,0,.25),
-0 10px 25px rgba(0,0,0,.35);
+    border-radius:
+    120px 90px 50px 30px /
+    90px 90px 40px 40px;
+
+    box-shadow:
+    inset 0 8px 12px rgba(255,255,255,.6),
+    inset 0 -10px 12px rgba(0,0,0,.18),
+    0 10px 25px rgba(0,0,0,.35);
+
+    transition:.3s;
 }
 
-.pcrp-hat::before{
-background:
-linear-gradient(
-180deg,
-#66b3ff,
-#0055aa
-);
-}
-
-.pcrp-hat::after{
-background:
-linear-gradient(
-180deg,
-#66b3ff,
-#0055aa
-);
-}
-
-.pcrp-hat:hover{
-box-shadow:
-0 0 20px rgba(0,140,255,.8),
-0 0 40px rgba(0,140,255,.5);
-}
-  
 .hardhat:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,215,0,.8),0 0 40px rgba(255,215,0,.4);
+    transform:scale(1.05);
+    box-shadow:
+        0 0 20px rgba(255,215,0,.8),
+        0 0 40px rgba(255,215,0,.4);
 }
 
 .hardhat::before{
-content:"";
-position:absolute;
-right:-18px;
-bottom:12px;
-width:70px;
-height:18px;
-background:linear-gradient(180deg,#ffcf40,#ff9900);
-border-radius:0 20px 20px 0;
+    content:"";
+    position:absolute;
+    right:-18px;
+    bottom:12px;
+    width:70px;
+    height:18px;
+    background:linear-gradient(180deg,#ffcf40,#ff9900);
+    border-radius:0 20px 20px 0;
 }
 
 .hardhat::after{
-content:"";
-position:absolute;
-left:-8px;
-bottom:8px;
-width:45px;
-height:22px;
-background:linear-gradient(180deg,#ffcf40,#ff9900);
-border-radius:20px 0 0 20px;
+    content:"";
+    position:absolute;
+    left:-8px;
+    bottom:8px;
+    width:45px;
+    height:22px;
+    background:linear-gradient(180deg,#ffcf40,#ff9900);
+    border-radius:20px 0 0 20px;
 }
 
+/* PCRP Blue Hats */
+
+.pcrp-hat{
+    background:
+    linear-gradient(
+    180deg,
+    #8fd3ff 0%,
+    #3399ff 35%,
+    #0066cc 100%
+    );
+
+    color:white;
+}
+
+.pcrp-hat::before,
+.pcrp-hat::after{
+    background:
+    linear-gradient(
+    180deg,
+    #66b3ff,
+    #0055aa
+    );
+}
+
+.pcrp-hat:hover{
+    box-shadow:
+        0 0 20px rgba(0,140,255,.8),
+        0 0 40px rgba(0,140,255,.5);
+}
+
+/* Shine */
+
 .ridge{
-position:absolute;
-left:45px;
-top:10px;
-width:14px;
-height:85px;
-border-radius:10px;
-background:rgba(255,255,255,.25);
+    position:absolute;
+    left:45px;
+    top:10px;
+    width:14px;
+    height:85px;
+    border-radius:10px;
+    background:rgba(255,255,255,.25);
 }
 
 .shine{
-position:absolute;
-top:-50%;
-left:-150%;
-width:60px;
-height:250%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);
-transform:rotate(25deg);
-animation:hatSweep 4s linear infinite;
+    position:absolute;
+    top:-50%;
+    left:-150%;
+    width:60px;
+    height:250%;
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.9),
+    transparent
+    );
+    transform:rotate(25deg);
+    animation:hatSweep 4s linear infinite;
 }
 
 @keyframes hatSweep{
-0%{left:-150%;}
-100%{left:250%;}
+    0%{left:-150%;}
+    100%{left:250%;}
 }
 
-.submenu{display:none;margin-top:15px;}
-.submenu.active{display:block;}
+/* Menus */
+
+.submenu{
+    display:none;
+    margin-top:15px;
+}
+
+.submenu.active{
+    display:block;
+}
 
 .submenu a{
-display:block;
-width:190px;
-margin:6px auto;
-padding:10px;
-text-decoration:none;
-text-align:center;
-font-weight:bold;
-color:#00334d;
-border-radius:10px;
-background:linear-gradient(180deg,#ffffff,#dddddd);
+    display:block;
+    width:190px;
+    margin:6px auto;
+    padding:10px;
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    color:#00334d;
+    border-radius:10px;
+    background:
+    linear-gradient(
+    180deg,
+    #ffffff,
+    #dddddd
+    );
 }
 
-.dashboard-panel{
-display:none;
-margin-top:15px;
-background:#fff;
-border-radius:12px;
-padding:8px;
-box-shadow:0 0 20px rgba(255,255,255,.25);
+/* Fullscreen Design References */
+
+.fullscreen-dashboard{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background:#fff;
+    z-index:99999;
 }
 
-.dashboard-panel.active{display:block;}
-
-.dashboard-panel iframe{
-width:600px;
-height:350px;
-border:none;
-border-radius:8px;
+.fullscreen-dashboard.active{
+    display:block;
 }
+
+.fullscreen-dashboard iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
+
+/* Close Button */
+
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:20px;
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:rgba(0,0,0,.75);
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:100000;
+    transition:.3s;
+}
+
+.close-btn:hover{
+    transform:scale(1.1);
+    background:#ff0000;
+}
+
+/* Mobile */
 
 @media(max-width:768px){
-body{overflow:auto;}
-.portal-wrapper{flex-direction:column;gap:100px;top:65%;}
-.kkb-grid{grid-template-columns:1fr;}
-.pcrp-top{flex-direction:column;}
-.dashboard-panel iframe{width:90vw;height:300px;}
+
+    body{
+        overflow:auto;
+    }
+
+    .portal-wrapper{
+        flex-direction:column;
+        gap:100px;
+        top:65%;
+    }
+
+    .kkb-grid{
+        grid-template-columns:1fr;
+    }
+
+    .pcrp-top{
+        flex-direction:column;
+    }
 }
 </style>
 </head>
@@ -257,13 +367,21 @@ body{overflow:auto;}
 
 <div class="portal-wrapper">
 
+<!-- KKB -->
+
 <div class="section">
+
 <div class="section-title">KKB-CDD</div>
 
 <div class="kkb-grid">
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m1')"><div class="shine"></div><div class="ridge"></div>Manuals and Tools</button>
+<button class="hardhat" onclick="toggleMenu('m1')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Manuals and Tools
+</button>
+
 <div class="submenu" id="m1">
 <a href="#">Project Tracker</a>
 <a href="#">Work Plan</a>
@@ -274,7 +392,12 @@ body{overflow:auto;}
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m2')"><div class="shine"></div><div class="ridge"></div>Guidance Memo</button>
+<button class="hardhat" onclick="toggleMenu('m2')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Guidance Memo
+</button>
+
 <div class="submenu" id="m2">
 <a href="#">CAD Files</a>
 <a href="#">Drawings</a>
@@ -284,7 +407,12 @@ body{overflow:auto;}
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m3')"><div class="shine"></div><div class="ridge"></div>Presentations</button>
+<button class="hardhat" onclick="toggleMenu('m3')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Presentations
+</button>
+
 <div class="submenu" id="m3">
 <a href="#">Progress</a>
 <a href="#">Inspection</a>
@@ -293,7 +421,12 @@ body{overflow:auto;}
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('m4')"><div class="shine"></div><div class="ridge"></div>Reports and Monitoring Froms</button>
+<button class="hardhat" onclick="toggleMenu('m4')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Reports and Monitoring Forms
+</button>
+
 <div class="submenu" id="m4">
 <a href="#">Forms</a>
 <a href="#">Templates</a>
@@ -305,7 +438,10 @@ body{overflow:auto;}
 </div>
 </div>
 
+<!-- PCRP -->
+
 <div class="section">
+
 <div class="section-title">PCRP</div>
 
 <div class="pcrp-triangle">
@@ -313,7 +449,12 @@ body{overflow:auto;}
 <div class="pcrp-top">
 
 <div class="holder">
-<button class="hardhat pcrp-hat" onclick="toggleMenu('p1')"><div class="shine"></div><div class="ridge"></div>Manuals and Tools</button>
+<button class="hardhat pcrp-hat" onclick="toggleMenu('p1')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Manuals and Tools
+</button>
+
 <div class="submenu" id="p1">
 <a href="#">Monitoring Sheet 1</a>
 <a href="#">Monitoring Sheet 2</a>
@@ -321,7 +462,12 @@ body{overflow:auto;}
 </div>
 
 <div class="holder">
-<button class="hardhat pcrp-hat" onclick="toggleMenu('p2')"><div class="shine"></div><div class="ridge"></div>Presentations</button>
+<button class="hardhat pcrp-hat" onclick="toggleMenu('p2')">
+<div class="shine"></div>
+<div class="ridge"></div>
+Presentations
+</button>
+
 <div class="submenu" id="p2">
 <a href="#">Monthly Report</a>
 <a href="#">Consolidated Report</a>
@@ -331,65 +477,128 @@ body{overflow:auto;}
 </div>
 
 <div class="pcrp-bottom">
+
 <div class="holder">
-<button class="hardhat pcrp-hat" onclick="toggleDashboard()"><div class="shine"></div><div class="ridge"></div>Design References</button>
-<div class="dashboard-panel" id="dashboardPanel">
+
+<button class="hardhat pcrp-hat" onclick="toggleDashboard()">
+<div class="shine"></div>
+<div class="ridge"></div>
+Design References
+</button>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+<!-- Fullscreen Dashboard -->
+
+<div class="fullscreen-dashboard" id="dashboardPanel">
+
+<button class="close-btn" onclick="closeDashboard()">✕</button>
+
 <iframe src="https://gadpayat.github.io/SP-Tech-Design-Ref/"></iframe>
-</div>
-</div>
-</div>
 
 </div>
-</div>
 
-</div>
 </div>
 
 <script>
+
 function toggleMenu(id){
-document.querySelectorAll('.submenu').forEach(menu=>{
-if(menu.id!==id){menu.classList.remove('active');}
-});
-document.getElementById(id).classList.toggle('active');
+
+    document.querySelectorAll('.submenu').forEach(menu=>{
+        if(menu.id!==id){
+            menu.classList.remove('active');
+        }
+    });
+
+    document.getElementById(id).classList.toggle('active');
 }
 
 function toggleDashboard(){
-document.querySelectorAll('.submenu').forEach(menu=>menu.classList.remove('active'));
-document.getElementById('dashboardPanel').classList.toggle('active');
+
+    document
+    .querySelectorAll('.submenu')
+    .forEach(menu=>menu.classList.remove('active'));
+
+    document
+    .getElementById('dashboardPanel')
+    .classList.add('active');
 }
+
+function closeDashboard(){
+
+    document
+    .getElementById('dashboardPanel')
+    .classList.remove('active');
+}
+
+/* Welding Sparks */
 
 const weldZone=document.getElementById('welding-zone');
 
 const weldingPoints=[
-{x:0.12,y:0.80},
-{x:0.85,y:0.25},
-{x:0.50,y:0.92}
+    {x:0.12,y:0.80},
+    {x:0.85,y:0.25},
+    {x:0.50,y:0.92}
 ];
 
 function createWeldBurst(){
-const p=weldingPoints[Math.floor(Math.random()*weldingPoints.length)];
-const sourceX=window.innerWidth*p.x;
-const sourceY=window.innerHeight*p.y;
 
-for(let i=0;i<18;i++){
-const spark=document.createElement('div');
-spark.className='weld-spark';
-spark.style.left=sourceX+'px';
-spark.style.top=sourceY+'px';
+    const p=
+    weldingPoints[
+    Math.floor(
+    Math.random()*weldingPoints.length
+    )];
 
-const angle=(-95+Math.random()*80)*(Math.PI/180);
-const distance=80+Math.random()*260;
+    const sourceX=window.innerWidth*p.x;
+    const sourceY=window.innerHeight*p.y;
 
-spark.style.setProperty('--dx',Math.cos(angle)*distance);
-spark.style.setProperty('--dy',Math.sin(angle)*distance);
-spark.style.animationDuration=(0.5+Math.random()*0.8)+'s';
+    for(let i=0;i<18;i++){
 
-weldZone.appendChild(spark);
-spark.addEventListener('animationend',()=>spark.remove());
-}
+        const spark=document.createElement('div');
+
+        spark.className='weld-spark';
+
+        spark.style.left=sourceX+'px';
+        spark.style.top=sourceY+'px';
+
+        const angle=
+        (-95+Math.random()*80)
+        *(Math.PI/180);
+
+        const distance=
+        80+Math.random()*260;
+
+        spark.style.setProperty(
+        '--dx',
+        Math.cos(angle)*distance
+        );
+
+        spark.style.setProperty(
+        '--dy',
+        Math.sin(angle)*distance
+        );
+
+        spark.style.animationDuration=
+        (0.5+Math.random()*0.8)+'s';
+
+        weldZone.appendChild(spark);
+
+        spark.addEventListener(
+        'animationend',
+        ()=>spark.remove()
+        );
+    }
 }
 
 setInterval(createWeldBurst,120);
+
 </script>
 
 </body>
