@@ -110,7 +110,48 @@ inset 0 -10px 12px rgba(0,0,0,.18),
 0 10px 25px rgba(0,0,0,.35);
 transition:.3s;
 }
+  
+.pcrp-hat{
+background:
+linear-gradient(
+180deg,
+#8fd3ff 0%,
+#3399ff 35%,
+#0066cc 100%
+);
 
+color:white;
+
+box-shadow:
+inset 0 8px 12px rgba(255,255,255,.5),
+inset 0 -10px 12px rgba(0,0,0,.25),
+0 10px 25px rgba(0,0,0,.35);
+}
+
+.pcrp-hat::before{
+background:
+linear-gradient(
+180deg,
+#66b3ff,
+#0055aa
+);
+}
+
+.pcrp-hat::after{
+background:
+linear-gradient(
+180deg,
+#66b3ff,
+#0055aa
+);
+}
+
+.pcrp-hat:hover{
+box-shadow:
+0 0 20px rgba(0,140,255,.8),
+0 0 40px rgba(0,140,255,.5);
+}
+  
 .hardhat:hover{
 transform:scale(1.05);
 box-shadow:0 0 20px rgba(255,215,0,.8),0 0 40px rgba(255,215,0,.4);
@@ -272,7 +313,7 @@ body{overflow:auto;}
 <div class="pcrp-top">
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('p1')"><div class="shine"></div><div class="ridge"></div>Monitoring</button>
+<button class="hardhat pcrp-hat" onclick="toggleMenu('p1')"><div class="shine"></div><div class="ridge"></div>Monitoring</button>
 <div class="submenu" id="p1">
 <a href="#">Monitoring Sheet 1</a>
 <a href="#">Monitoring Sheet 2</a>
@@ -280,7 +321,7 @@ body{overflow:auto;}
 </div>
 
 <div class="holder">
-<button class="hardhat" onclick="toggleMenu('p2')"><div class="shine"></div><div class="ridge"></div>Reports</button>
+<button class="hardhat pcrp-hat" onclick="toggleMenu('p2')"><div class="shine"></div><div class="ridge"></div>Reports</button>
 <div class="submenu" id="p2">
 <a href="#">Monthly Report</a>
 <a href="#">Consolidated Report</a>
@@ -291,7 +332,7 @@ body{overflow:auto;}
 
 <div class="pcrp-bottom">
 <div class="holder">
-<button class="hardhat" onclick="toggleDashboard()"><div class="shine"></div><div class="ridge"></div>Dashboard</button>
+<button class="hardhat pcrp-hat" onclick="toggleDashboard()"><div class="shine"></div><div class="ridge"></div>Dashboard</button>
 <div class="dashboard-panel" id="dashboardPanel">
 <iframe src="about:blank"></iframe>
 </div>
