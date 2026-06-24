@@ -27,45 +27,6 @@ html,body{
     overflow:hidden;
 }
 
-/* Welding Sparks */
-#welding-zone{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:1;
-}
-
-.weld-spark{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:#fff8c6;
-    opacity:0;
-    box-shadow:
-        0 0 4px #fff,
-        0 0 8px #ffd700,
-        0 0 16px #ff9500;
-    animation:weldFly linear forwards;
-}
-
-@keyframes weldFly{
-    0%{
-        transform:translate(0,0) scale(1);
-        opacity:1;
-    }
-    15%{opacity:1;}
-    100%{
-        transform:
-        translate(
-        calc(var(--dx)*1px),
-        calc(var(--dy)*1px))
-        scale(.15);
-        opacity:0;
-    }
-}
-
 /* Portal Layout */
 
 .portal-wrapper{
@@ -393,8 +354,6 @@ html,body{
 
 <div class="portal">
 
-<div id="welding-zone"></div>
-
 <div class="portal-wrapper">
 
 <!-- KKB -->
@@ -679,74 +638,6 @@ function closePresentationDashboard(){
     .getElementById('presentationPanel')
     .classList.remove('active');
 }
-
-/* Welding Sparks */
-
-const weldZone=document.getElementById('welding-zone');
-
-const weldingPoints=[
-    {x:0.05,y:0.15},
-    {x:0.15,y:0.80},
-    {x:0.25,y:0.35},
-    {x:0.35,y:0.65},
-    {x:0.50,y:0.20},
-    {x:0.50,y:0.92},
-    {x:0.65,y:0.45},
-    {x:0.75,y:0.75},
-    {x:0.85,y:0.25},
-    {x:0.95,y:0.60}
-];
-
-function createWeldBurst(){
-
-    const p=
-    weldingPoints[
-    Math.floor(
-    Math.random()*weldingPoints.length
-    )];
-
-    const sourceX=window.innerWidth*p.x;
-    const sourceY=window.innerHeight*p.y;
-
-    for(let i=0;i<30;i++){
-
-        const spark=document.createElement('div');
-
-        spark.className='weld-spark';
-
-        spark.style.left=sourceX+'px';
-        spark.style.top=sourceY+'px';
-
-        const angle=
-        (-95+Math.random()*80)
-        *(Math.PI/180);
-
-        const distance=
-        80+Math.random()*260;
-
-        spark.style.setProperty(
-        '--dx',
-        Math.cos(angle)*distance
-        );
-
-        spark.style.setProperty(
-        '--dy',
-        Math.sin(angle)*distance
-        );
-
-        spark.style.animationDuration=
-        (0.5+Math.random()*0.8)+'s';
-
-        weldZone.appendChild(spark);
-
-        spark.addEventListener(
-        'animationend',
-        ()=>spark.remove()
-        );
-    }
-}
-
-setInterval(createWeldBurst,90);
 
 </script>
 
