@@ -83,53 +83,6 @@ html,body{
 
     animation:goldGlow 2.5s ease-in-out infinite alternate;
 }
-
-.pcrp-title{
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #bfe8ff 15%,
-            #66c2ff 35%,
-            #3399ff 50%,
-            #66c2ff 65%,
-            #d9f2ff 85%,
-            #ffffff 100%
-        );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-
-    text-shadow:
-        0 1px 0 #ffffff,
-        0 2px 0 #80ccff,
-        0 3px 0 #3399ff,
-        0 0 10px rgba(51,153,255,.8),
-        0 0 20px rgba(51,153,255,.6),
-        0 0 40px rgba(51,153,255,.4);
-
-    filter:
-        drop-shadow(0 0 8px rgba(51,153,255,.5))
-        drop-shadow(0 0 15px rgba(51,153,255,.3));
-
-    animation:blueGlow 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes blueGlow{
-    from{
-        filter:
-            drop-shadow(0 0 5px rgba(51,153,255,.4))
-            drop-shadow(0 0 10px rgba(51,153,255,.3));
-    }
-
-    to{
-        filter:
-            drop-shadow(0 0 15px rgba(51,153,255,.8))
-            drop-shadow(0 0 25px rgba(51,153,255,.5));
-    }
-}
-    
 .section-title::before{
     content:'';
     position:absolute;
@@ -657,7 +610,7 @@ Reports and Monitoring Forms
 
 <div class="section">
 
-<div class="section-title pcrp-title">PCRP</div>
+<div class="section-title">PCRP</div>
 
 <div class="pcrp-triangle">
 
