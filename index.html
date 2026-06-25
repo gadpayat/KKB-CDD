@@ -186,21 +186,12 @@ html,body{
     justify-self: center;    /* center horizontally */
 }
     
-.pcrp-triangle{
-    display:flex;
-    flex-direction:column;
+.pcrp-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:40px 60px;
+    justify-items:center;
     align-items:center;
-    gap:50px;
-}
-
-.pcrp-top{
-    display:flex;
-    gap:60px;
-}
-
-.pcrp-bottom{
-    display:flex;
-    justify-content:center;
 }
 
 .holder{
@@ -466,8 +457,8 @@ html,body{
         grid-template-columns:1fr;
     }
 
-    .pcrp-top{
-        flex-direction:column;
+    .pcrp-grid{
+    grid-template-columns:1fr;
     }
 }
 </style>
@@ -659,65 +650,63 @@ Report & Monitoring Standard Forms
 
 <div class="section-title pcrp-title">PCRP</div>
 
-<div class="pcrp-triangle">
+<div class="pcrp-grid">
 
-<div class="pcrp-top">
+    <!-- Button 1 -->
+    <div class="holder">
+        <button class="hardhat pcrp-hat" onclick="toggleMenu('p1')">
+            <div class="shine"></div>
+            <div class="ridge"></div>
+            Manuals
+        </button>
 
-<div class="holder">
-<button class="hardhat pcrp-hat" onclick="toggleMenu('p1')">
-<div class="shine"></div>
-<div class="ridge"></div>
-Manuals and Tools
-</button>
+        <div class="submenu" id="p1">
+            <a href="https://drive.google.com/file/d/1wTCwu_0reKactPs3zBEbsPJQqMSj7aAO/view?usp=sharing"
+               target="_blank">
+               👆 Project Operation Manual
+            </a>
 
-<div class="submenu" id="p1">
-<a href="https://drive.google.com/file/d/1wTCwu_0reKactPs3zBEbsPJQqMSj7aAO/view?usp=sharing"
-   target="_blank"
-   rel="noopener noreferrer">
-   👆 Project Operation Manual
-</a>
-<a href="https://drive.google.com/file/d/1mc4R8rAxqXBEuLrDZg7n7sDCT-HtXd-F/view?usp=sharing"
-   target="_blank"
-   rel="noopener noreferrer">
-   👆 Sub Manual 1: Social Mobilization
-</a>
-<a href="https://drive.google.com/file/d/1TJiQF_fcpMxb4zD4d5MgL0ahL_5Ro2zF/view?usp=sharing"
-   target="_blank"
-   rel="noopener noreferrer">
-   👆 Field Guide for ACT
-</a>
-</div>
-</div>
+            <a href="https://drive.google.com/file/d/1mc4R8rAxqXBEuLrDZg7n7sDCT-HtXd-F/view?usp=sharing"
+               target="_blank">
+               👆 Sub Manual 1: Social Mobilization
+            </a>
 
-<div class="holder">
+            <a href="https://drive.google.com/file/d/1TJiQF_fcpMxb4zD4d5MgL0ahL_5Ro2zF/view?usp=sharing"
+               target="_blank">
+               👆 Field Guide for ACT
+            </a>
+        </div>
+    </div>
 
-<button class="hardhat pcrp-hat" onclick="togglePresentationDashboard()">
-<div class="shine"></div>
-<div class="ridge"></div>
-Presentations
-</button>
+    <!-- Button 2 -->
+    <div class="holder">
+        <button class="hardhat pcrp-hat"
+                onclick="togglePresentationDashboard()">
+            <div class="shine"></div>
+            <div class="ridge"></div>
+            Presentations
+        </button>
+    </div>
 
-</div>
-</div>
+    <!-- Button 3 -->
+    <div class="holder">
+        <button class="hardhat pcrp-hat"
+                onclick="toggleDashboard()">
+            <div class="shine"></div>
+            <div class="ridge"></div>
+            Design References
+        </button>
+    </div>
 
-</div>
-
-<div class="pcrp-bottom">
-
-<div class="holder">
-
-<button class="hardhat pcrp-hat" onclick="toggleDashboard()">
-<div class="shine"></div>
-<div class="ridge"></div>
-Design References
-</button>
-
-</div>
-
-</div>
-
-</div>
-</div>
+    <!-- NEW BUTTON 4 -->
+    <div class="holder">
+        <button class="hardhat pcrp-hat"
+                onclick="window.open('https://drive.google.com/drive/folders/1CtMKEk3QxlI52SFA3uhmvwKWlwlT-XBL','_blank')">
+            <div class="shine"></div>
+            <div class="ridge"></div>
+          Forms, Tools and Templates
+        </button>
+    </div>
 
 </div>
 
